@@ -3,6 +3,7 @@ package com.example.dodorecoder
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 
@@ -16,6 +17,11 @@ class MainActivity : AppCompatActivity() {
     private val recoderButton: RecorderButton by lazy {
         findViewById(R.id.recoderButton)
     }
+
+    private val recoderAtm: AtmView by lazy {
+        findViewById(R.id.recoderAtm)
+    }
+
     private var fileName: String = ""
     private var permissionToRecordAccepted = false
     private var permissions: Array<String> = arrayOf(Manifest.permission.RECORD_AUDIO)
@@ -54,10 +60,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun startRecording() {
         state = RecorderState.ON_PLAYING
+        Log.d("dodo2 ","startRecording 호출 ")
+
     }
 
     private fun stopRecording() {
         state = RecorderState.BEFORE_RECORDING
+        recoderAtm
     }
 
 
